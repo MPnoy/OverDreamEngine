@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<Rootnamespace>ODEngine</Rootnamespace>
+		<Configurations>Debug;Release;Profile</Configurations>
+		<StartupObject></StartupObject>
+		<Platforms>x64</Platforms>
+		<ApplicationIcon></ApplicationIcon>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<Optimize>false</Optimize>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<PlatformTarget>x64</PlatformTarget>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE;PROFILE</DefineConstants>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="ECS\**" />
+		<EmbeddedResource Remove="ECS\**" />
+		<None Remove="ECS\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FreeTypeSharp" Version="1.1.3" />
+		<PackageReference Include="NLayer.Core" Version="1.15.0" />
+		<PackageReference Include="openal.redist" Version="2.0.7" />
+		<PackageReference Include="OpenTK" Version="4.5.0" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
+	</ItemGroup>
+
+</Project>

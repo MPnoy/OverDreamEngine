@@ -1,0 +1,140 @@
+﻿ссылка на папку: $str <название ссылки> <путь до этой папки>
+ссылки должны быть объявлены прежде, чем будут использованы в пути.
+Как работает ссылка?
+ссылка: $str a1 Images\bg
+Объявление картинки: $im black a1+\black
+Объявление звука: $au black a1+\black
+Объявление звука: $au black a1+\black разделители FadeTime
+Объявление покадровой анимации: $anim black a1+\black
+Ссылка на картинку в итоге: Images\bg\black
+!!!ВНИМАНИЕ, НЕ ОСТАВЛЯЙТЕ ПРОБЕЛЫ В НАЗВАНИЯХ ПАПОК В ПУТЯХ. ЭТО ВЕДЁТ К ОШИБКЕ!!!
+
+$str images Images
+$str bg images + \bg\
+$str cg images + \cg\
+$str sp images + \sp\
+
+$au Forest_day Audio\ambience\forest_day.mp3
+$au Room_day Audio\ambience\room_day.mp3
+
+$au 123 Audio\music\123.mp3
+$au 210 Audio\music\210.mp3
+$au 210cut Audio\music\210cut.mp3
+$au 217-1 Audio\music\217-1.mp3
+$au Emby Audio\music\Emby.mp3
+$au Fiery_Water Audio\music\Fiery_water.mp3
+$au 95 Audio\music\95[2017_01.draft4].mp3
+$au 8D Audio\music\8D.mp3 0:06 0:12 1:42.904 2:17.187 0.01
+#$au 8D Audio\music\8D.mp3 0:06 0:12 1:42.904 2:00.0455 2:17.187 0.01
+
+
+
+    #===========================================================
+    #                     Графика. Фоны.
+    #===========================================================  
+
+Пролог
+$im prologue Images\bg\prologue
+$im prologue_clouds Images\bg\prologue_clouds
+
+Несортированные
+$im black Images\bg\black
+$im Night Images\bg\Night_1080
+$im Office_Day Images\bg\Office_Day
+$im Room_Day2 Images\bg\Room_Day2
+$im Train Images\bg\Train
+
+$custom train_tunnel TrainTunnel 2520 1080
+$custom train_surface TrainSurface 2520 1080
+
+
+
+    #===========================================================
+    #                     Графика. Спрайты.
+    #===========================================================  
+
+#er
+$im er_angry_1 Images\sp\er\1 Images\sp\er\emot\angry
+$im er_angry_2 Images\sp\er\2 Images\sp\er\emot\angry
+$im er_angry_3 Images\sp\er\3 Images\sp\er\emot\angry
+$im er_angry_4 Images\sp\er\4 Images\sp\er\emot\angry
+$im er_glum_1 Images\sp\er\1 Images\sp\er\emot\glum
+$im er_glum_2 Images\sp\er\2 Images\sp\er\emot\glum
+$im er_glum_3 Images\sp\er\3 Images\sp\er\emot\glum
+$im er_glum_4 Images\sp\er\4 Images\sp\er\emot\glum
+$im er_grin_1 Images\sp\er\1 Images\sp\er\emot\grin
+$im er_grin_2 Images\sp\er\2 Images\sp\er\emot\grin
+$im er_grin_3 Images\sp\er\3 Images\sp\er\emot\grin
+$im er_grin_4 Images\sp\er\4 Images\sp\er\emot\grin
+$im er_normal_1 Images\sp\er\1 Images\sp\er\emot\normal
+$im er_normal_2 Images\sp\er\2 Images\sp\er\emot\normal
+$im er_normal_3 Images\sp\er\3 Images\sp\er\emot\normal
+$im er_normal_4 Images\sp\er\4 Images\sp\er\emot\normal
+$im er_sad_1 Images\sp\er\1 Images\sp\er\emot\sad
+$im er_sad_2 Images\sp\er\2 Images\sp\er\emot\sad
+$im er_sad_3 Images\sp\er\3 Images\sp\er\emot\sad
+$im er_sad_4 Images\sp\er\4 Images\sp\er\emot\sad
+$im er_smile_1 Images\sp\er\1 Images\sp\er\emot\smile
+$im er_smile_2 Images\sp\er\2 Images\sp\er\emot\smile
+$im er_smile_3 Images\sp\er\3 Images\sp\er\emot\smile
+$im er_smile_4 Images\sp\er\4 Images\sp\er\emot\smile
+$im er_surprise_1 Images\sp\er\1 Images\sp\er\emot\surprise
+$im er_surprise_2 Images\sp\er\2 Images\sp\er\emot\surprise
+$im er_surprise_3 Images\sp\er\3 Images\sp\er\emot\surprise
+$im er_surprise_4 Images\sp\er\4 Images\sp\er\emot\surprise
+$im er_suspicious_1 Images\sp\er\1 Images\sp\er\emot\suspicious
+$im er_suspicious_2 Images\sp\er\2 Images\sp\er\emot\suspicious
+$im er_suspicious_3 Images\sp\er\3 Images\sp\er\emot\suspicious
+$im er_suspicious_4 Images\sp\er\4 Images\sp\er\emot\suspicious
+$im er_tender_1 Images\sp\er\1 Images\sp\er\emot\tender
+$im er_tender_2 Images\sp\er\2 Images\sp\er\emot\tender
+$im er_tender_3 Images\sp\er\3 Images\sp\er\emot\tender
+$im er_tender_4 Images\sp\er\4 Images\sp\er\emot\tender
+
+    #===========================================================
+    #                     Графика. ЦГ вставки.
+    #===========================================================  
+
+Пролог
+$im prologue_sonya_falter Images\cg\prologue_sonya_falter
+
+    #===========================================================
+    #                     Графика. ЦГ.
+    #===========================================================  
+
+Пролог
+$im Sonya_on_bench_1 Images\cg\Sonya_on_bench_1
+$im Sonya_on_bench_2 Images\cg\Sonya_on_bench_2
+$im Sonya_on_bench_3 Images\cg\Sonya_on_bench_3
+$im Prologue_myself_appearance Images\cg\Prologue_myself_appearance
+$im Prologue_sword_ready Images\cg\Prologue_sword_ready
+$im Prologue_sword_swing Images\cg\Prologue_sword_swing
+$im Prologue_sword_hit Images\cg\Prologue_sword_hit
+$im Prologue_injury_1 Images\cg\Prologue_injury_1
+$im Prologue_injury_2 Images\cg\Prologue_injury_2
+$im Prologue_blood_1 Images\cg\Prologue_blood_1
+$im Prologue_blood_2 Images\cg\Prologue_blood_1
+$im Prologue_blood_3 Images\cg\Prologue_blood_1
+
+    #===========================================================
+    #                     Тестовые объявления.
+    #===========================================================  
+
+$im uber Images\sp\er\1 Images\sp\er\emot\angry Images\sp\er\2 Images\sp\er\emot\glum Images\sp\er\3 Images\sp\er\emot\grin Images\sp\er\4 Images\sp\er\emot\normal Images\sp\er\emot\sad Images\sp\er\emot\smile Images\sp\er\emot\surprise Images\sp\er\emot\suspicious Images\sp\er\emot\tender
+
+$im as_test Images\test\as-test
+
+$im test_1 Images\sp\test_1
+$im test_2 Images\sp\test_2
+
+$im bg_black_tube Images\black_tube
+
+#Lisa
+$im li_happy Images\sp\Liza_radost
+
+#Sonya
+$im so_happy Images\sp\Sonya_radost
+$im so_normal Images\sp\Sonya_normal
+
+$im li_lines Images\sp\Liza_lines
+$im lines Images\lines

@@ -1,0 +1,13 @@
+{
+    "Shortcuts":
+    [
+        {
+            "Name": "trainAnim 1",
+            "Text": "bg black shader(shaderAnim) at(train, speed(fuck))",
+            "Variables":
+            [
+                "fuck"
+            ]
+        }
+    ]
+}

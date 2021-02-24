@@ -1,0 +1,15 @@
+﻿$ch dima Дмитрий #FF0000 false true
+$ch er Эрин #FF4D4D false true
+
+$ch sg Сергей #B0B0B0 false true
+$ch sg2 Сергей #B0B0B0 false true
+
+$ch so Соня #2c63ae false true
+$ch son Спутница #2c63ae false true
+
+1 - тег.
+2 - айди.
+3 - Имя в тексте.
+4 - цвет в RGB.
+5 - обводка.
+6 - тень.

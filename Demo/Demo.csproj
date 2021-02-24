@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace></RootNamespace>
+		<Configurations>Debug;Release;Profile</Configurations>
+		<UseWindowsForms>false</UseWindowsForms>
+		<Platforms>x64;x86</Platforms>
+		<ApplicationIcon>ICON_small.ico</ApplicationIcon>
+		<StartupObject>Program</StartupObject>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<Optimize>false</Optimize>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<PlatformTarget>x64</PlatformTarget>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE;PROFILE</DefineConstants>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="openal.redist" Version="2.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OverDreamEngine\OverDreamEngine.csproj" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="If Exist &quot;$(OutDir)Data\*.*&quot; RMDIR /S /Q &quot;$(OutDir)Data&quot;&#xD;&#xA;MKDIR &quot;$(OutDir)Data&quot;&#xD;&#xA;XCOPY &quot;$(ProjectDir)Data&quot; &quot;$(OutDir)Data&quot; /S /Y" />
+	</Target>
+
+</Project>

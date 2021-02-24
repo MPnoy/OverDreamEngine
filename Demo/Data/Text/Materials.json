@@ -1,0 +1,41 @@
+{
+    "Materials":
+    [
+        {
+            "Name": "ec_vortex",
+            "Shader": "MaskTransition",
+            "Variables":
+            [
+                {
+                    "Type": "Texture",
+                    "Name": "Mask",
+                    "Value": "Images/Masks/ec_vortex"
+                }
+            ]
+        },
+        {
+            "Name": "ec_rust",
+            "Shader": "MaskTransition",
+            "Variables":
+            [
+                {
+                    "Type": "Texture",
+                    "Name": "Mask",
+                    "Value": "Images/Masks/ec_rust"
+                }
+            ]
+        },
+        {
+            "Name": "roof_ks",
+            "Shader": "MaskTransition",
+            "Variables":
+            [
+                {
+                    "Type": "Texture",
+                    "Name": "Mask",
+                    "Value": "Images/Masks/roof_ks"
+                }
+            ]
+        }
+    ]
+}

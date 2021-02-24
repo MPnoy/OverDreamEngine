@@ -1,0 +1,193 @@
+﻿TableChap "Глава 1" "Инкапсуляция"
+"shit shit shit xyi shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit xyi shit shit shit shit shit shit shit shit xyi shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit"
+
+label side1
+BlockRollBack
+am Room_day with 2
+
+bg Office_Day with 1
+sp li happy at Left distance xclose
+nvl off
+"ЯZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+er "ууууббббддддhhhhщщщщцццц"
+er "ЯZZZZZZZZZZ ZZZZZZZZZZZZZZZZ"
+
+label test_destroy 
+"..."
+sp er surprise 2 at Left distance xfar timereplace 4 with 1
+"..."
+clear all 
+"..."
+
+
+label psycho
+nvl off
+mu 95 with 4 volume 1
+bg train_surface at BGTime speedstart 0 speedend 1 time 5 effect neonedge with 1
+"ЕДЕМ БЛЯТЬ"
+"А куда едем то?"
+"Очевидно нахуй"
+sp so happy at Right normal with 2
+"..."
+sp so happy destroy 2
+bg train_surface at BGTime speedstart 1 speedend 0 time 5 effect neonedge with 1
+"..."
+bg train_tunnel at BGTime speedstart 0 speedend 1 time 5 with 1
+"ЕДЕМ БЛЯТЬ"
+"А куда едем то?"
+"Очевидно нахуй"
+sp so happy at Right normal effect drunk with 2
+so "Ты чё ЛСД объелся?"
+sp so happy destroy 2
+bg train_tunnel at BGTime speedstart 1 speedend 0 time 5 with 1
+sg "Чёт меня зафракталило))0)))0000"
+bg train_tunnel at BGTime speedstart 0 speedend 1 time 5 effect neonedge with 1
+"..."
+bg train_tunnel at BGTime speedstart 1 speedend 0 time 5 effect neonedge with 1
+"..."
+jump psycho
+
+
+label test_resize 
+nvl off
+"..."
+sp er surprise 2 at Center distance xclose timereplace 4 with 1
+"Дискотека!"
+sp er surprise 2 at Center distance xfar timereplace 4 with 1
+"туц"
+sp er surprise 3 at Center distance xclose timereplace 4 with 1
+"туц-туц"
+sp er surprise 1 at Center distance xfar timereplace 4 with 1
+"туц-туц-туц"
+sp er surprise 2 at Center distance xclose timereplace 4 with 1
+"..."
+sp er surprise 3 at FLeft distance xfar timereplace 4 with 1
+" "
+sp er surprise 1 at FLeft distance normal timereplace 4 with 1
+" "
+sp er surprise 2 at Center distance far timereplace 4 with 1
+" "
+sp er surprise 3 at Center distance close timereplace 4 with 1
+" "
+sp er surprise 1 at Center distance normal timereplace 4 with 1
+" "
+jump test_resize 
+
+label side13 
+"Я"
+sp er surprise 1 as test at SimpleX
+
+sp er surprise 1 as er4 at FLeft distance xfar with 
+sp li happy as li3 at Left distance xfar with 
+sp er surprise 1 as er3 at CLeft distance xfar with 
+sp li happy as li2 at Center distance xfar with 
+sp er surprise 1 as er2 at CRight distance xfar with 
+sp li happy at Right distance xfar with 
+sp er surprise 1 at FRight distance xfar with 
+"Я"
+sp er surprise 1 as test at SimpleX
+
+sp er surprise 1 as er4 at FLeft distance far with 1
+sp li happy as li3 at Left distance far with 1
+sp er3 surprise 2 at CLeft distance far with 1
+sp li happy as li2 at Center distance far with 1
+sp er surprise 1 as er2 at CRight distance far with 1
+sp li happy at Right distance far with 1
+sp er surprise 1 at FRight distance far with 1
+"Я"
+sp er surprise 1 as test at SimpleX
+
+sp er surprise 1 as er4 at FLeft distance normal with 1
+sp li happy as li3 at Left distance normal with 1
+sp er surprise 1 as er3 at CLeft distance normal with 1
+sp li happy as li2 at Center distance normal with 1
+sp er surprise 1 as er2 at CRight distance normal with 1
+sp li happy at Right distance normal with 1
+sp er surprise 1 at FRight distance normal with 1
+"Я"
+sp er surprise 1 as test at SimpleX destroy 1
+
+sp er surprise 1 as er4 at FLeft distance close with 
+sp li happy as li3 at Left distance close with 
+sp er surprise 1 as er3 at CLeft distance close with 
+sp li happy as li2 at Center distance close with 
+sp er surprise 1 as er2 at CRight distance close with 
+sp li happy at Right distance close with 
+sp er surprise 1 at FRight distance close with 
+"Я"
+sp er surprise 1 as er4 at FLeft distance xclose with 
+sp li happy as li3 at Left distance xclose with 
+sp er surprise 1 as er3 at CLeft distance xclose with 
+sp li happy as li2 at Center distance xclose with 
+sp er surprise 1 as er2 at CRight distance xclose with 
+sp li happy at Right distance xclose with 
+sp er surprise 1 at FRight distance xclose with 
+"Я"
+sp er surprise 1 as er4 at Govno with 
+sp li happy as li3 at Govno with 
+sp er surprise 1 as er3 at Govno with 
+sp li happy as li2 at Govno with 
+sp er surprise 1 as er2 at Govno with 
+sp li happy at Govno with 
+sp er surprise 1 at Govno with 
+"Я"
+jump side13 
+
+
+label side12 
+"Я"
+sp li lines at FLeft distance normal with 
+sp er surprise 1 at FRight distance normal with 
+"Я"
+sp li lines at Left distance normal with 
+"Я"
+sp li lines at CLeft distance normal with 
+"Я"
+sp li lines at Center distance normal with 
+"Я"
+sp li lines at CRight distance normal with 
+"Я"
+sp li lines at Right distance normal with 
+"Я"
+sp li lines at FRight distance normal with 
+"Я"
+jump side12 
+"Я"
+label side2 
+sp li happy at Left distance xfar with 
+sp so happy at Center distance xfar with 
+bg Office_Day with 1
+sp er surprise 1 at Right distance xfar with 
+"Ты"
+sp li happy at Left distance far with 
+sp so happy at Center distance far with 
+sp er surprise 1 at Right distance far with 
+"Ты"
+sp li happy at Left distance normal with 
+sp so happy at Center distance normal with 
+sp er surprise 1 at Right distance normal with 
+"Ты"
+sp li happy at Left distance close with 
+sp so happy at Center distance close with 
+sp er surprise 1 at Right distance close with 
+"Ты"
+sp li happy at Left distance xclose with 
+sp so happy at Center distance xclose with 
+sp er surprise 1 at Right distance xclose with 
+
+er "Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен? Ты доволен?"
+sp er surprise 1 at Left distance normal with ec_rust 2 
+
+label test_transition 
+sg "Нет."
+er "Пидора ответ."
+bg Night with ec_rust 4 
+er "Пидора ответ."
+bg Room_Day2 with ec_rust 4 
+sg "Нет."
+sp li happy at Right with 2 
+er "Ты доволен?"
+sp li happy at Left with 2 
+sg "Нет."
+sg "Ты не Эрин."
+jump test_transition 
