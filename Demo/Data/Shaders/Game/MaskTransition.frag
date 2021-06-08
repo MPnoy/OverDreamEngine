@@ -17,7 +17,7 @@ void main()
 {
     vec4 o1 = texture(Tex1Tex, mix(Tex1Rect.xy, Tex1Rect.zw, fragUV));
     vec4 o2 = texture(Tex2Tex, mix(Tex2Rect.xy, Tex2Rect.zw, fragUV));
-    vec4 m = texture(Mask, fragUV);
+    vec4 m = texture(Mask, fragUV) * 0.9999;
     vec4 o = o1;
     for (int i = 0; i < 4; i++)
     {

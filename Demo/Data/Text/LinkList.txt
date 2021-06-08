@@ -5,6 +5,7 @@
 Объявление картинки: $im black a1+\black
 Объявление звука: $au black a1+\black
 Объявление звука: $au black a1+\black разделители FadeTime
+Пояснение: фрагменты считаются следующим образом - от начала трека до 1го разделителя - 1ый фрагмент. От 1го до 2го - 2ой фрагмент и т.д.
 Объявление покадровой анимации: $anim black a1+\black
 Ссылка на картинку в итоге: Images\bg\black
 !!!ВНИМАНИЕ, НЕ ОСТАВЛЯЙТЕ ПРОБЕЛЫ В НАЗВАНИЯХ ПАПОК В ПУТЯХ. ЭТО ВЕДЁТ К ОШИБКЕ!!!
@@ -14,11 +15,16 @@ $str bg images + \bg\
 $str cg images + \cg\
 $str sp images + \sp\
 
-$au Forest_day Audio\ambience\forest_day.mp3
-$au Room_day Audio\ambience\room_day.mp3
 
+    #===========================================================
+    #                     Звук. Музыка.
+    #===========================================================  
+
+
+$au 92 Audio\music\92.mp3
 $au 123 Audio\music\123.mp3
 $au 210 Audio\music\210.mp3
+$au 210_prologue Audio\music\210.mp3 0:59 1:58 0.01
 $au 210cut Audio\music\210cut.mp3
 $au 217-1 Audio\music\217-1.mp3
 $au Emby Audio\music\Emby.mp3
@@ -26,7 +32,24 @@ $au Fiery_Water Audio\music\Fiery_water.mp3
 $au 95 Audio\music\95[2017_01.draft4].mp3
 $au 8D Audio\music\8D.mp3 0:06 0:12 1:42.904 2:17.187 0.01
 #$au 8D Audio\music\8D.mp3 0:06 0:12 1:42.904 2:00.0455 2:17.187 0.01
+ 
+    #===========================================================
+    #                     Звук. Эмбиент.
+    #===========================================================  
 
+$au Forest_day Audio\ambience\forest_day.mp3
+$au Room_day Audio\ambience\room_day.mp3
+$au City_park Audio\ambience\city_park_day.mp3
+
+    #===========================================================
+    #                     Звуки.
+    #===========================================================  
+
+$au Glitch_fade Audio\sfx\glitch_fade.mp3
+$au Hit_ground Audio\sfx\hit_ground.mp3
+$au Knife_in Audio\sfx\knife_in.mp3
+$au Whoosh_distortion Audio\sfx\whoosh_distortion.mp3
+$au Body_fall Audio\sfx\body_fall.mp3
 
 
     #===========================================================
@@ -47,6 +70,13 @@ $im Train Images\bg\Train
 $custom train_tunnel TrainTunnel 2520 1080
 $custom train_surface TrainSurface 2520 1080
 
+    #===========================================================
+    #                     Графика. Постэфекты (вызываются как цг).
+    #===========================================================  
+
+
+$im bg_black_tube Images\black_tube
+$im bg_white_tube Images\white_tube
 
 
     #===========================================================
@@ -103,6 +133,9 @@ $im prologue_sonya_falter Images\cg\prologue_sonya_falter
     #===========================================================  
 
 Пролог
+$im Prologue_Sonya_1 Images\cg\Prologue_Sonya_1
+$im Prologue_Sonya_2 Images\cg\Prologue_Sonya_2
+$im Prologue_Sonya_full Images\cg\Prologue_Sonya_full
 $im Sonya_on_bench_1 Images\cg\Sonya_on_bench_1
 $im Sonya_on_bench_2 Images\cg\Sonya_on_bench_2
 $im Sonya_on_bench_3 Images\cg\Sonya_on_bench_3
@@ -113,8 +146,8 @@ $im Prologue_sword_hit Images\cg\Prologue_sword_hit
 $im Prologue_injury_1 Images\cg\Prologue_injury_1
 $im Prologue_injury_2 Images\cg\Prologue_injury_2
 $im Prologue_blood_1 Images\cg\Prologue_blood_1
-$im Prologue_blood_2 Images\cg\Prologue_blood_1
-$im Prologue_blood_3 Images\cg\Prologue_blood_1
+$im Prologue_blood_2 Images\cg\Prologue_blood_2
+$im Prologue_blood_3 Images\cg\Prologue_blood_3
 
     #===========================================================
     #                     Тестовые объявления.
@@ -127,7 +160,7 @@ $im as_test Images\test\as-test
 $im test_1 Images\sp\test_1
 $im test_2 Images\sp\test_2
 
-$im bg_black_tube Images\black_tube
+
 
 #Lisa
 $im li_happy Images\sp\Liza_radost

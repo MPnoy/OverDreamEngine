@@ -1,13 +1,13 @@
 #version 420
 
-layout(binding = 0) uniform sampler2D textureSampler;
+uniform sampler2D blitInput;
 
 in vec2 fragUV;
 out vec4 out_Color;
 
-void main() 
+void main()
 {
-    vec4 o = texture(textureSampler, fragUV);
+    vec4 o = texture(blitInput, fragUV);
     o.rgb /= o.a;
     out_Color = o;
 }

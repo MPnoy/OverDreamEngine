@@ -38,15 +38,6 @@ namespace Screens
             screenContainer.renderer.isVisible = false;
         }
 
-        private void ButtonSave_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e, Action action)
-        {
-            if (e.mouseButton == MouseButton.Left)
-            {
-                action();
-                Hide();
-            }
-        }
-
         private void ButtonCancel_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
         {
             if (e.mouseButton == MouseButton.Left)
@@ -63,14 +54,24 @@ namespace Screens
 
             for (int i = 0; i < saves.Count; i++)
             {
-                var buttonSave = GUIElement.CreateContainer(screenContainer.renderer, new Vector3(0f, 3.5f + i * 0.75f, -2f), new Vector2(6f, 0.56f), "Game/Color");
+                var buttonSave = GUIElement.CreateContainer(screenContainer.renderer, new Vector3(0f, 3.5f - i * 0.75f, -2f), new Vector2(6f, 0.56f), "Game/Color");
                 {
                     buttonSave.renderer.name = "ButtonSave" + i;
-                    ODEngine.Helpers.GUIHelper.TextButton(buttonSave, new Vector3(0f, 0.02f, 0f), "Furore", 0.4f, saves[i].userDescription, new Color4(160, 185, 198, 255), Color4.White);
+                    ODEngine.Helpers.GUIHelper.TextButton(buttonSave, new Vector3(0f, 0.02f, 0f), "Furore", 0.4f, saves[i].UserDescription, new Color4(160, 185, 198, 255), Color4.White);
                     var i1 = i;
                     buttonSave.MouseClick += (a, b) => ButtonSave_MouseClick(a, b, () => ODEngine.Helpers.SaveLoadHelper.LoadGame(i1));
                 }
                 buttonSaves.Add(buttonSave);
+            }
+        }
+
+        private void ButtonSave_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e, Action action)
+        {
+            if (e.mouseButton == MouseButton.Left)
+            {
+                Hide();
+                action();
+                screenManager.miniMenu.Hide();
             }
         }
 
@@ -83,6 +84,8 @@ namespace Screens
                 buttonSaves[i].Entity.GetComponent<Renderer>().childs[0].Entity.Destroy();
                 buttonSaves[i].Entity.Destroy();
             }
+
+            buttonSaves.Clear();
         }
 
         public override void Update()

@@ -39,6 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\OverDreamEngine.VN\OverDreamEngine.VN.csproj" />
 		<ProjectReference Include="..\OverDreamEngine\OverDreamEngine.csproj" />
 	</ItemGroup>
 

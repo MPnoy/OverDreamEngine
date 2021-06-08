@@ -11,7 +11,7 @@ using ODEngine.EC;
 
 namespace Screens
 {
-    public class MainMenu : Screen
+    public class MainMenu : ScreenVN
     {
         private GUIElement buttonsContainer;
         private GUIElement deskImage;
@@ -27,7 +27,7 @@ namespace Screens
         private bool menuIsVisible = false;
         private object transitionObject;
 
-        public MainMenu(ScreenManager screenManager, Renderer parent) : base(screenManager, parent)
+        public MainMenu(ScreenManagerVN screenManager, Renderer parent) : base(screenManager, parent)
         {
             screenContainer.name = "MainMenu screenContainer";
             screenContainer.renderer.name = "MainMenu screenContainer Renderer";
@@ -40,7 +40,7 @@ namespace Screens
             buttonsContainer.renderer.isVisible = false;
             buttonsContainer.material.SetFloat("alpha", 0f);
 
-            var rays = GUIElement.CreateImage(screenContainer.renderer, Vector3.Zero, parentRenderer.size, "GUI/MainMenu/PostAber", new Material("Game/Alpha", null, "Game/Alpha"));
+            var rays = GUIElement.CreateImage(screenContainer.renderer, Vector3.Zero, parentRenderer.size, "GUI/MainMenu/PostAber", new Material(null, "Game/Alpha"));
             { // Лучи
                 IEnumerator AlphaAnimation()
                 {
@@ -77,10 +77,10 @@ namespace Screens
             { // Кнопка начала игры
                 buttonStart.renderer.name = "Start game";
                 ODEngine.Helpers.GUIHelper.ImageButton(buttonStart,
-                    PathBuilder.dataPath + "Images/GUI/MainMenu/BookGo_idle.png",
-                    PathBuilder.dataPath + "Images/GUI/MainMenu/BookGo_hover.png");
+                    "Images/GUI/MainMenu/BookGo_idle.png",
+                    "Images/GUI/MainMenu/BookGo_hover.png");
 
-                var imageTicket = ImageLoader.LoadRaw(PathBuilder.dataPath + "Images/GUI/MainMenu/BookGo_idle.png", (ticket) =>
+                var imageTicket = ImageLoader.LoadRaw("Images/GUI/MainMenu/BookGo_idle.png", (ticket) =>
                 {
                     buttonStart.CreateMask(ticket.rawImage).Wait();
                     ticket.Unload();
@@ -108,13 +108,13 @@ namespace Screens
             {
                 buttonMenu.renderer.name = "Menu";
 
-                var imageFile1 = PathBuilder.dataPath + "Images/GUI/MainMenu/Buttons/Triangle_idle.png";
+                var imageFile1 = "Images/GUI/MainMenu/Buttons/Triangle_idle.png";
                 var texTicket1 = GPUTextureLoader.LoadAsync(imageFile1);
-                var imageFile2 = PathBuilder.dataPath + "Images/GUI/MainMenu/Buttons/Triangle_hover.png";
+                var imageFile2 = "Images/GUI/MainMenu/Buttons/Triangle_hover.png";
                 var texTicket2 = GPUTextureLoader.LoadAsync(imageFile2);
-                var imageFile3 = PathBuilder.dataPath + "Images/GUI/MainMenu/Buttons/TriangleBack_idle.png";
+                var imageFile3 = "Images/GUI/MainMenu/Buttons/TriangleBack_idle.png";
                 var texTicket3 = GPUTextureLoader.LoadAsync(imageFile3);
-                var imageFile4 = PathBuilder.dataPath + "Images/GUI/MainMenu/Buttons/TriangleBack_hover.png";
+                var imageFile4 = "Images/GUI/MainMenu/Buttons/TriangleBack_hover.png";
                 var texTicket4 = GPUTextureLoader.LoadAsync(imageFile4);
 
                 buttonMenu.renderer.onRender = (input, output) =>
@@ -163,29 +163,29 @@ namespace Screens
             buttonExit = GUIElement.CreateContainer(buttonsContainer.renderer, new Vector3(6.75f, 0f, -1f), new Vector2(1.95f, 0.56f), "Game/Color");
             { // Кнопка выхода
                 buttonExit.renderer.name = "Exit";
-                ODEngine.Helpers.GUIHelper.TextButton(buttonExit, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Exit", new Color4(160, 185, 198, 255), Color4.White);
+                ODEngine.Helpers.GUIHelper.TextButton(buttonExit, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Выход", new Color4(160, 185, 198, 255), Color4.White);
                 buttonExit.MouseClick += ButtonExit_MouseClick;
             }
 
             buttonSettings = GUIElement.CreateContainer(buttonsContainer.renderer, new Vector3(3.88f, 0f, -1f), new Vector2(3.02f, 0.56f), "Game/Color");
             { // Кнопка "Настройки"
                 buttonSettings.renderer.name = "Settings";
-                ODEngine.Helpers.GUIHelper.TextButton(buttonSettings, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Settings", new Color4(160, 185, 198, 255), Color4.White);
+                ODEngine.Helpers.GUIHelper.TextButton(buttonSettings, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Настройки", new Color4(160, 185, 198, 255), Color4.White);
                 buttonSettings.MouseClick += ButtonSettings_MouseClick;
             }
 
             buttonLoad = GUIElement.CreateContainer(buttonsContainer.renderer, new Vector3(0.5f, 0f, -1f), new Vector2(3.02f, 0.56f), "Game/Color");
             { // Кнопка "Загрузить"
                 buttonLoad.renderer.name = "Load";
-                ODEngine.Helpers.GUIHelper.TextButton(buttonLoad, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Load", new Color4(160, 185, 198, 255), new Color4(160, 185, 198, 255));
+                ODEngine.Helpers.GUIHelper.TextButton(buttonLoad, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Загрузить", new Color4(160, 185, 198, 255), Color4.White);
                 buttonLoad.MouseClick += ButtonLoad_MouseClick;
             }
 
             buttonFragment = GUIElement.CreateContainer(buttonsContainer.renderer, new Vector3(-2.65f, 0f, -1f), new Vector2(3.02f, 0.56f), "Game/Color");
             { // Кнопка "Фрагмент"
                 buttonFragment.renderer.name = "Fragment";
-                ODEngine.Helpers.GUIHelper.TextButton(buttonFragment, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Start", new Color4(160, 185, 198, 255), Color4.White);
-                buttonFragment.MouseClick += ButtonStart_MouseClick;
+                ODEngine.Helpers.GUIHelper.TextButton(buttonFragment, new Vector3(0f, 0.02f, 0f), "Furore", 0.45f, "Фрагмент", new Color4(160, 185, 198, 255), Color4.White);
+                buttonFragment.MouseClick += ButtonFragment_MouseClick;
             }
 
             isLoaded = () => backBack.IsLoaded && character1.IsLoaded && deskImage.IsLoaded && rays.IsLoaded &&
@@ -194,7 +194,17 @@ namespace Screens
 
         private void ButtonLoad_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
         {
-
+            if (e.mouseButton == MouseButton.Left)
+            {
+                try
+                {
+                    screenManager.ShowScreen<LoadMenu>(this, false);
+                }
+                catch (Exception ex)
+                {
+                    screenManager.Print("\n" + ex.Message + "\n\n" + ex.StackTrace + "\n");
+                }
+            }
         }
 
         private void ButtonMenu_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
@@ -255,30 +265,35 @@ namespace Screens
 
         private void ButtonExit_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
         {
-            screenManager.ShowScreen<ExitMenu>(this);
+            screenManager.exitMenu.Show(this);
         }
 
         private void ButtonSettings_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
         {
-            screenManager.ShowScreen<SettingsScreen>(this);
+            screenManager.settingsScreen.Show(this);
         }
 
         private void ButtonStart_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
         {
             if (e.mouseButton == MouseButton.Left)
             {
-                screenManager.ShowScreen<ScenarioScreen>(this);
+                screenManager.scenarioScreen.Show(this, true);
+                screenManager.scenarioScreen.StartGame("ch01_start");
+            }
+        }
+
+        private void ButtonFragment_MouseClick(object sender, (Vector2 mousePosition, MouseButton mouseButton) e)
+        {
+            if (e.mouseButton == MouseButton.Left)
+            {
+                screenManager.scenarioScreen.Show(this, true);
                 screenManager.scenarioScreen.StartGame("shard_0101");
             }
         }
 
         protected override void OnEnable()
         {
-            var routine = Routine();
-            if (routine.MoveNext())
-            {
-                CoroutineExecutor.Add(routine);
-            }
+            CoroutineExecutor.Add(Routine(), true);
 
             IEnumerator Routine()
             {
@@ -286,7 +301,7 @@ namespace Screens
                 {
                     var backBlack = new Entity().CreateComponent<Renderer>();
                     backBlack.SetParent(Graphics.mainRenderer);
-                    backBlack.position = new Vector3(0f, 0f, -2f);
+                    backBlack.Position = new Vector3(0f, 0f, -2f);
                     backBlack.size = new Vector2(12f, 5f);
                     backBlack.onRender = (_, output) => Graphics.Clear(output, Color4.Black);
                     var labelContainer = GUIElement.CreateContainer(Graphics.mainRenderer, new Vector3(0f, 0f, -3f), backBlack.size, "Game/Alpha");
@@ -294,11 +309,7 @@ namespace Screens
                     var textBox = label.Entity.CreateComponent<TextBox>();
                     textBox.InitFromRenderer();
                     textBox.CharHeight = 0.4f;
-                    textBox.Text = new TextColored("Attention!\n", new SColor(1f, 0f, 0f)) + new TextColored(
-                        "This demo shows the main features of the engine.\n" +
-                        "F1 - Development menu (Start of the selected label)\n" +
-                        "F2 - Console on/off (enter \"h\" or \"help\" for command list)\n" +
-                        "F11 - fullscreen on/off", new SColor(1f, 1f, 1f));
+                    textBox.Text = new TextColored("Внимание!\n", new SColor(1f, 0f, 0f)) + new TextColored("\nДанная версия может иметь не итоговый вид и по ходу разработки разные части могут быть изменены.\n\nДанный проект не носит развлекательный характер. Он не ставит своей целью кому-то угодить или понравиться.", new SColor(1f, 1f, 1f));
                     textBox.Align = ODEngine.Core.Text.TextAlign.Center;
 
                     foreach (var i in CoroutineExecutor.ForTime(1f))
@@ -308,19 +319,23 @@ namespace Screens
                             Finish2();
                             yield break;
                         }
+
                         labelContainer.material.SetFloat("alpha", i * i);
                         yield return null;
                     }
 
-                    foreach (var _ in CoroutineExecutor.ForTime(7f))
+#if RELEASE
+                    foreach (var _ in CoroutineExecutor.ForTime(4f))
                     {
                         if (!isEnable)
                         {
                             Finish2();
                             yield break;
                         }
+
                         yield return null;
                     }
+#endif
 
                     while (!isLoaded())
                     {
@@ -339,6 +354,7 @@ namespace Screens
                             Finish2();
                             yield break;
                         }
+
                         labelContainer.material.SetFloat("alpha", (1f - i) * (1f - i));
                         yield return null;
                     }
@@ -364,6 +380,7 @@ namespace Screens
                             Finish();
                             yield break;
                         }
+
                         screenContainer.material.SetFloat("alpha", i);
                         yield return null;
                     }
@@ -380,8 +397,8 @@ namespace Screens
                 }
 
                 { // Музло
-                    menuMusic = screenManager.audioCore.Play(screenManager.audioChannelUiMusic, PathBuilder.dataPath + "Audio/music/217-1.mp3", true);
-                    menuMusic.SetVolume(MathF.Pow(ODEngine.Helpers.SettingsDataHelper.settingsData.MusicVolume, 2f));
+                    menuMusic = Kernel.audioCore.Play(screenManager.audioChannelUiMusic, "Audio/music/217-1.mp3", true);
+                    RefreshVolume();
                 }
 
                 Finish();
@@ -391,7 +408,11 @@ namespace Screens
                     gameStart = false;
                 }
             }
+        }
 
+        public void RefreshVolume()
+        {
+            menuMusic?.SetVolume(MathF.Pow(GameKernel.settings.settingsData.MusicVolume, 2f));
         }
 
         protected override void OnDisable()

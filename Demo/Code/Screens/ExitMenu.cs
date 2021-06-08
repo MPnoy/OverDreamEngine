@@ -22,8 +22,8 @@ namespace Screens
 
                 IEnumerator Routine()
                 {
-                    var ticket1 = GPUTextureLoader.LoadAsync(PathBuilder.dataPath + "Images/GUI/ec_exit_bg_1.png");
-                    var ticket2 = GPUTextureLoader.LoadAsync(PathBuilder.dataPath + "Images/GUI/ec_exit_bg_2.png");
+                    var ticket1 = GPUTextureLoader.LoadAsync("Images/GUI/ec_exit_bg_1.png");
+                    var ticket2 = GPUTextureLoader.LoadAsync("Images/GUI/ec_exit_bg_2.png");
 
                     while (ticket1.texture == null || ticket2.texture == null)
                     {
@@ -57,6 +57,7 @@ namespace Screens
 
             var label = GUIElement.CreateEmpty(screenContainer.renderer, new Vector3(-2.3f, 0f, -2f), new Vector2(10f, 1.08f));
             label.renderer.name = "Label";
+            
             {
                 var textBox = label.Entity.CreateComponent<TextBox>(name);
                 textBox.InitFromRenderer();

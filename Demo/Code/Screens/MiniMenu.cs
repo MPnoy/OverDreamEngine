@@ -9,7 +9,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Screens
 {
-    public class MiniMenu : Screen
+    public class MiniMenu : ScreenVN
     {
         private struct MenuElement
         {
@@ -40,13 +40,13 @@ namespace Screens
 
         private bool fastDisable = false;
 
-        public MiniMenu(ScreenManager screenManager, Renderer parent) : base(screenManager, parent)
+        public MiniMenu(ScreenManagerVN screenManager, Renderer parent) : base(screenManager, parent)
         {
             int menuCounter = 0;
 
             GUIElement CreateNextButton(string text)
             {
-                var ret = GUIElement.CreateContainer(screenContainer.renderer, new Vector3(0f, 1f - INTERVAL * menuCounter, -3f), new Vector2(7f, 0.56f), "Game/ColorAlpha");
+                var ret = GUIElement.CreateContainer(screenContainer.renderer, new Vector3(0f, 1.75f - INTERVAL * menuCounter, -3f), new Vector2(7f, 0.56f), "Game/ColorAlpha");
                 ret.renderer.name = text;
                 ODEngine.Helpers.GUIHelper.TextButton(ret, new Vector3(0f, 0.02f, 0f), "Furore", 0.4f, text, new Color4(160, 185, 198, 255), Color4.White);
                 var menuCounter2 = menuCounter;
@@ -55,7 +55,7 @@ namespace Screens
                 {
                     foreach (var i in CoroutineExecutor.ForTime(0.15f))
                     {
-                        ret.renderer.position.X = ((menuCounter2 % 2) * 2 - 1) * (1f - i) * 5f;
+                        ret.renderer.PositionX = ((menuCounter2 % 2) * 2 - 1) * (1f - i) * 5f;
                         ret.material.SetFloat("alpha", MathF.Pow(i, 1.5f));
                         yield return null;
                     }
@@ -65,7 +65,7 @@ namespace Screens
                 {
                     foreach (var i in CoroutineExecutor.ForTime(0.15f))
                     {
-                        ret.renderer.position.X = ((menuCounter2 % 2) * 2 - 1) * i * 5f;
+                        ret.renderer.PositionX = ((menuCounter2 % 2) * 2 - 1) * i * 5f;
                         ret.material.SetFloat("alpha", MathF.Pow(1f - i, 1.5f));
                         yield return null;
                     }
@@ -78,20 +78,17 @@ namespace Screens
                 return ret;
             }
 
-            // Parent is scenario screen
-            screenContainer = GUIElement.CreateTransparent(parent, new Vector3(0f, 0f, -2000f), Vector2.Zero);
-
             clickArea = GUIElement.CreateTransparent(screenContainer.renderer, new Vector3(0f, 0f, -2f), new Vector2(19.2f, 10.8f));
             clickArea.MouseDown += ClickArea_MouseDown;
 
             buttonMainMenu = CreateNextButton("Главное меню");
             buttonMainMenu.MouseClick += ButtonMainMenu_MouseClick;
 
-            //buttonSave = CreateNextButton("Сохранить");
-            //buttonSave.MouseClick += ButtonSave_MouseClick;
+            buttonSave = CreateNextButton("Сохранить");
+            buttonSave.MouseClick += ButtonSave_MouseClick;
 
-            //buttonLoad = CreateNextButton("Загрузить");
-            //buttonLoad.MouseClick += ButtonLoad_MouseClick;
+            buttonLoad = CreateNextButton("Загрузить");
+            buttonLoad.MouseClick += ButtonLoad_MouseClick;
 
             buttonShit = CreateNextButton("Не тыкать");
             buttonShit.MouseClick += ButtonShit_MouseClick;
@@ -102,7 +99,7 @@ namespace Screens
             buttonExit = CreateNextButton("Выход");
             buttonExit.MouseClick += ButtonExit_MouseClick;
 
-            background = GUIElement.CreateImage(screenContainer.renderer, new Vector3(0f, 1.05f - (INTERVAL * (menuCounter - 1)) / 2f, -1f), new Vector2(5f, INTERVAL * menuCounter), "GUI/ec_night", new Material("Game/Alpha", null, "Game/Alpha"));
+            background = GUIElement.CreateImage(screenContainer.renderer, new Vector3(0f, 1.8f - (INTERVAL * (menuCounter - 1)) / 2f, -1f), new Vector2(5f, INTERVAL * menuCounter), "GUI/ec_night", new Material(null, "Game/Alpha"));
             {
                 IEnumerator Enable()
                 {
@@ -160,7 +157,8 @@ namespace Screens
             {
                 try
                 {
-                    //ODEngine.Helpers.SaveLoadHelper.SaveGame("Save " + DateTime.Now.ToString());
+                    ODEngine.Helpers.SaveLoadHelper.SaveGame("Save " + DateTime.Now.ToString());
+                    Hide();
                 }
                 catch (Exception ex)
                 {
@@ -179,7 +177,7 @@ namespace Screens
             {
                 try
                 {
-                    //screenManager.ShowScreen<LoadMenu>(this, false);
+                    screenManager.ShowScreen<LoadMenu>(this, false);
                 }
                 catch (Exception ex)
                 {

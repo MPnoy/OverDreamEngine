@@ -1,16 +1,38 @@
-﻿TableChap "Глава 1" "Инкапсуляция"
+﻿title "Глава 1" "Инкапсуляция"
 "shit shit shit xyi shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit xyi shit shit shit shit shit shit shit shit xyi shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit shit"
 
-label side1
+label test_scene
+wshow
+nvl off
+clear all 0
+bg prologue at BGLeft Time 0 with 1
+bg bg_white_tube as bg2 z -1 with 1
+cg Prologue_Sonya_1 with 1
+"Тест команды scene с кастомным переходом. Переход много объектов в много объектов"
+scene bg Prologue_myself_appearance with ec_vortex 3
+sp prologue sonya_falter at Center distance xfar ThisScale 0.7 OffsetY 2 XAnim true TimeShow 0.5 z -1 with 0
+"оп"
+jump test_scene
+
+label test_213
+NVL on right
 BlockRollBack
 am Room_day with 2
-
 bg Office_Day with 1
+sp li happy at FLeft distance xclose
+"FL"
 sp li happy at Left distance xclose
-nvl off
-"ЯZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
-er "ууууббббддддhhhhщщщщцццц"
-er "ЯZZZZZZZZZZ ZZZZZZZZZZZZZZZZ"
+"L"
+sp li happy at CLeft distance xclose
+"CL"
+sp li happy at Center distance xclose
+"C"
+sp li happy at CRight distance xclose
+"CR"
+sp li happy at Right distance xclose
+"R"
+sp li happy at FRight distance xclose
+"FR"
 
 label test_destroy 
 "..."
@@ -21,7 +43,6 @@ clear all
 
 
 label psycho
-nvl off
 mu 95 with 4 volume 1
 bg train_surface at BGTime speedstart 0 speedend 1 time 5 effect neonedge with 1
 "ЕДЕМ БЛЯТЬ"
@@ -49,7 +70,6 @@ jump psycho
 
 
 label test_resize 
-nvl off
 "..."
 sp er surprise 2 at Center distance xclose timereplace 4 with 1
 "Дискотека!"

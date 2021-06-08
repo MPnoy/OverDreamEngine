@@ -37,7 +37,7 @@ namespace ODEngine.TextAnimations
         {
             if (Effect != null)
             {
-                gameImage.shaderStack.AddEffect(Effect, false);
+                Image.shaderStack.AddEffect(Effect, false);
             }
         }
     }
@@ -63,16 +63,16 @@ namespace ODEngine.TextAnimations
 
         protected override void OnShow()
         {
-            var objectAspect = (float)gameImage.spriteSizePixels.x / gameImage.spriteSizePixels.y;
-            var imageAspect = (float)gameImage.newRequestData.composition.TextureSize.x / gameImage.newRequestData.composition.TextureSize.y;
+            var objectAspect = (float)Image.spriteSizePixels.x / Image.spriteSizePixels.y;
+            var imageAspect = (float)Image.newRequestData.composition.TextureSize.x / Image.newRequestData.composition.TextureSize.y;
             SetValue(Var.RectangleX, (imageAspect / objectAspect - 1f) * Mul);
             SetOther();
         }
 
         protected override void OnReplace()
         {
-            var objectAspect = (float)gameImage.spriteSizePixels.x / gameImage.spriteSizePixels.y;
-            var imageAspect = (float)gameImage.newRequestData.composition.TextureSize.x / gameImage.newRequestData.composition.TextureSize.y;
+            var objectAspect = (float)Image.spriteSizePixels.x / Image.spriteSizePixels.y;
+            var imageAspect = (float)Image.newRequestData.composition.TextureSize.x / Image.newRequestData.composition.TextureSize.y;
             Anim(Var.RectangleX, (imageAspect / objectAspect - 1f) * Mul, Time, InterpolationType.Ease);
             SetOther();
         }
@@ -90,15 +90,24 @@ namespace ODEngine.TextAnimations
         public PrologueClouds(TextAnimationController controller, GameImage gameImage) : base(controller, gameImage) { }
 
         public float Time { get; set; } = 2f;
+        public bool Start { get; set; } = false;
 
         protected override void OnShow()
         {
-            var objectAspect = (float)gameImage.spriteSizePixels.x / gameImage.spriteSizePixels.y;
-            var imageAspect = (float)gameImage.newRequestData.composition.TextureSize.x / gameImage.newRequestData.composition.TextureSize.y;
+            var objectAspect = (float)Image.spriteSizePixels.x / Image.spriteSizePixels.y;
+            var imageAspect = (float)Image.newRequestData.composition.TextureSize.x / Image.newRequestData.composition.TextureSize.y;
             SetValue(Var.RectangleX, 0f);
             SetValue(Var.RectangleWidth, imageAspect / objectAspect);
             SetValue(Var.RectangleHeight, imageAspect / objectAspect);
-            Anim(Var.RectangleY, 1f - imageAspect / objectAspect, -1f + imageAspect / objectAspect, Time, InterpolationType.Ease);
+
+            if (Start)
+            {
+                SetValue(Var.RectangleY, 1f - imageAspect / objectAspect);
+            }
+            else
+            {
+                Anim(Var.RectangleY, 1f - imageAspect / objectAspect, -1f + imageAspect / objectAspect, Time, InterpolationType.Ease);
+            }
         }
 
         protected override void OnReplace()

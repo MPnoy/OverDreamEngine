@@ -23,20 +23,20 @@ namespace Compositions
         {
             this.composition = composition;
             this.textureSize = textureSize;
-            identityMul = new Material("identityMul", "Atlas/Identity", "Atlas/IdentityMul")
+            identityMul = new Material("Atlas/Identity", "Atlas/IdentityMul")
             {
                 blendingFactorSource = OpenTK.Graphics.OpenGL4.BlendingFactor.One,
                 blendingFactorDestination = OpenTK.Graphics.OpenGL4.BlendingFactor.OneMinusSrcAlpha
             };
-            matrixUVMul = new Material("identityMul", "Atlas/MatrixUV", "Atlas/IdentityMul")
+            matrixUVMul = new Material("Atlas/MatrixUV", "Atlas/IdentityMul")
             {
                 blendingFactorSource = OpenTK.Graphics.OpenGL4.BlendingFactor.One,
                 blendingFactorDestination = OpenTK.Graphics.OpenGL4.BlendingFactor.OneMinusSrcAlpha
             };
-            identityDiv = new Material("IdentityDiv", "Atlas/Identity", "Atlas/IdentityDiv");
-            clear = new Material("IdentityDiv", "Atlas/Identity", "Atlas/Clear");
+            identityDiv = new Material("Atlas/Identity", "Atlas/IdentityDiv");
+            clear = new Material("Atlas/Identity", "Atlas/Clear");
 
-            deTrain = ImageCompositionStaticSimplex.GetComposition(PathBuilder.dataPath + "Images/bg/train_animation/de_train.png", resourceCache);
+            deTrain = ImageCompositionStaticSimplex.GetComposition("Images/bg/train_animation/de_train.png", resourceCache);
             var ret = new List<ImageCompositionDynamic.Item>
             {
                 new ImageCompositionDynamic.Item(deTrain)
@@ -44,7 +44,7 @@ namespace Compositions
             trainBacks = new ImageComposition[9];
             for (int i = 0; i < trainBacks.Length; i++)
             {
-                trainBacks[i] = ImageCompositionStaticSimplex.GetComposition(PathBuilder.dataPath + $"Images/bg/train_animation/train_back_{i + 1}.png", resourceCache);
+                trainBacks[i] = ImageCompositionStaticSimplex.GetComposition($"Images/bg/train_animation/train_back_{i + 1}.png", resourceCache);
                 ret.Add(new ImageCompositionDynamic.Item(trainBacks[i]));
             }
             return ret;
@@ -52,8 +52,8 @@ namespace Compositions
 
         public (RenderTexture texture, RenderAtlas.Texture atlasTexture) Render(Vector4 visibleRectangleNorm)
         {
-            var texture1 = Graphics.temporaryAtlas.Allocate(textureSize);
-            var texture2 = Graphics.temporaryAtlas.Allocate(textureSize);
+            var texture1 = Graphics.temporaryAtlas1.Allocate(textureSize);
+            var texture2 = Graphics.resultAtlas.Allocate(textureSize);
             Graphics.Blit(null, texture1, clear);
             for (int i = 0; i < trainBacks.Length; i++)
             {

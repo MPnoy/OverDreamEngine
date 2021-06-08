@@ -15,7 +15,7 @@ namespace TextAnimations
         {
             if (Name != null)
             {
-                gameImage.shaderStack.AddEffect(Name, false);
+                Image.shaderStack.AddEffect(Name, false);
             }
         }
 
@@ -49,80 +49,111 @@ namespace TextAnimations
         public float TimeHide { get; set; } = 1f;
         public string Effect { get; set; } = null;
         public bool XAnim { get; set; } = false;
-        private string distance;
+        public bool XAnimHide { get; set; } = false;
+
+        private float thisScale = 1f;
+        public float ThisScale
+        {
+            get => thisScale;
+            set { thisScale = value; CalcTransform(); }
+        }
+
+        private float offsetX = 0f;
+        public float OffsetX
+        {
+            get => offsetX;
+            set { offsetX = value; CalcTransform(); }
+        }
+
+        private float offsetY = 0f;
+        public float OffsetY
+        {
+            get => offsetY;
+            set { offsetY = value; CalcTransform(); }
+        }
+
+        private string distance = null;
         public string Distance
         {
             get => distance;
-            set
+            set { distance = value; CalcTransform(); }
+        }
+
+        private void CalcTransform()
+        {
+            string spriteName = Image.compositionName;
+            var length = spriteName.IndexOf('_');
+
+            if (length > 0)
             {
-                distance = value;
-
-                string spriteName = gameImage.compositionName;
-                var length = spriteName.IndexOf('_');
-                if (length > 0)
-                {
-                    spriteName = spriteName.Substring(0, length);
-                }
-                else
-                {
-                    spriteName = null;
-                }
-
-
-                switch (Distance)
-                {
-                    case "xclose":
-                        scale = 2.5f;
-                        switch (spriteName)
-                        {
-                            case "li": y = -20.5f; break;
-                            case "so": y = -18.5f; break;
-                            case "er": y = -22.2f; break;
-                            default: y = -20.5f; break;
-                        }
-                        break;
-                    case "close":
-                        scale = 1.75f;
-                        switch (spriteName)
-                        {
-                            case "li": y = -12.5f; break;
-                            case "so": y = -11f; break;
-                            case "er": y = -13.9f; break;
-                            default: y = -12.5f; break;
-                        }
-                        break;
-                    case "normal":
-                        scale = 1f;
-                        switch (spriteName)
-                        {
-                            case "li": y = -6.5f; break;
-
-                            default: y = -6.5f; break;
-                        }
-                        break;
-                    case "far":
-                        scale = 0.65f;
-                        switch (spriteName)
-                        {
-                            case "li": y = -3f; break;
-
-                            default: y = -3f; break;
-                        }
-                        break;
-                    case "xfar":
-                        scale = 0.5f;
-                        switch (spriteName)
-                        {
-                            case "li": y = -1.4f; break;
-
-                            default: y = -1.4f; break;
-                        }
-                        break;
-                    default:
-                        throw new Exception();
-                }
-                onChangeDistance?.Invoke();
+                spriteName = spriteName.Substring(0, length);
             }
+            else
+            {
+                spriteName = null;
+            }
+
+            switch (distance)
+            {
+                case "xclose":
+                    scale = 2.5f;
+                    switch (spriteName)
+                    {
+                        case "li": y = -20.5f; break;
+                        case "so": y = -18.5f; break;
+                        case "er": y = -22.2f; break;
+                        default: y = -20.5f; break;
+                    }
+                    break;
+                case "close":
+                    scale = 1.75f;
+                    switch (spriteName)
+                    {
+                        case "li": y = -12.5f; break;
+                        case "so": y = -11f; break;
+                        case "er": y = -13.9f; break;
+                        default: y = -12.5f; break;
+                    }
+                    break;
+                case "normal":
+                    scale = 1f;
+                    switch (spriteName)
+                    {
+                        case "li": y = -6.5f; break;
+
+                        default: y = -6.5f; break;
+                    }
+                    break;
+                case "far":
+                    scale = 0.65f;
+                    switch (spriteName)
+                    {
+                        case "li": y = -3f; break;
+
+                        default: y = -3f; break;
+                    }
+                    break;
+                case "xfar":
+                    scale = 0.5f;
+                    switch (spriteName)
+                    {
+                        case "li": y = -1.4f; break;
+
+                        default: y = -1.4f; break;
+                    }
+                    break;
+                case null:
+                    scale = 1f;
+                    y = 0f;
+                    break;
+                default:
+                    throw new Exception();
+            }
+
+            scale *= thisScale;
+            x += offsetX;
+            y += offsetY;
+            onChangeDistance?.Invoke();
         }
 
         public Action onChangeDistance = null;
@@ -137,7 +168,7 @@ namespace TextAnimations
         {
             if (Effect != null)
             {
-                gameImage.shaderStack.AddEffect(Effect, false);
+                Image.shaderStack.AddEffect(Effect, false);
             }
 
             if (XAnim)
@@ -158,7 +189,7 @@ namespace TextAnimations
         {
             if (Effect != null)
             {
-                gameImage.shaderStack.AddEffect(Effect, false);
+                Image.shaderStack.AddEffect(Effect, false);
             }
 
             Anim(Var.PosX, x, TimeReplace, InterpolationType.Ease);
@@ -170,7 +201,12 @@ namespace TextAnimations
         {
             if (Effect != null)
             {
-                gameImage.shaderStack.AddEffect(Effect, false);
+                Image.shaderStack.AddEffect(Effect, false);
+            }
+
+            if (XAnimHide)
+            {
+                Anim(Var.PosX, x, startX, TimeHide, InterpolationType.Ease);
             }
 
             Anim(Var.Alpha, 0f, TimeHide, InterpolationType.Ease);
@@ -205,6 +241,7 @@ namespace TextAnimations
                 }
                 startX = x + 0.5f * XSideMul();
             };
+
             onChangeDistance();
         }
 
@@ -271,8 +308,10 @@ namespace TextAnimations
                     default:
                         throw new Exception();
                 }
+
                 startX = x + 0.5f * XSideMul();
             };
+
             onChangeDistance();
         }
 
@@ -305,8 +344,10 @@ namespace TextAnimations
                     default:
                         throw new Exception();
                 }
+
                 startX = x + 0.5f * XSideMul();
             };
+
             onChangeDistance();
         }
 
