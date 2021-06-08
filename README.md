@@ -1,6 +1,6 @@
 # OverDreamEngine
 A free visual novel engine, was written for Depth of Cold. <p>
-The demo folder contains an example of use. It is written for .NET 5.0 and in theory it can be cross-platform, does not contain platform-dependent libraries.<p>
+The demo folder contains an example of use. It is written for .NET 5.0 and is cross-platform, tested on Windows, Linux and MacOS.<p>
 
 # Features
 Simple and complex animations<p>
